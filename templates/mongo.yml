@@ -1,25 +1,25 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mongodb-deployment
+  name: {{.Values.mongodb.dpname}}
   labels: 
-    app: mongodb
+    app: {{.Values.mongodb.name}}
     type: database
-    for: mongo-express
+
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: mongodb
+      app: {{.Values.mongodb.name}}
       
   template:
     metadata:
       labels: 
-        app: mongodb
+        app: {{.Values.mongodb.name}}
     spec:
       containers:
-        - image:  mongo
-          name:  mongodb
+        - image:  {{.Values.mongodb.image}}:{{.Values.mongodb.tag}}
+          name:  {{.Values.mongodb.name}}
           ports:
             - containerPort:  27017
           env:
@@ -38,12 +38,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name:  mongo-service
+  name:  {{.Values.mongodb.service.name}}
 spec:
   selector:
-    app: mongodb
+    app: {{.Values.mongodb.name}}
   type:   ClusterIP 
   ports:
   - protocol: TCP
-    port:  27017
+    port:  {{.Values.mongodb.service.port}}
     targetPort:  27017
