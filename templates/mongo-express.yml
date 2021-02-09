@@ -4,13 +4,11 @@ metadata:
   name: {{.Values.express.name}}
   labels: 
     app: {{.Values.express.name}}
-
 spec:
-  replicas: 1
+  replicas: {{.Values.express.replicas}}
   selector:
     matchLabels:
       app: {{.Values.express.name}}
-
   template:
     metadata:
       labels:
@@ -55,4 +53,3 @@ spec:
   - port:  {{.Values.express.service.port}}
     targetPort:  {{.Values.express.service.targetPort}}
     nodePort: {{.Values.express.service.nodePort}}
-    

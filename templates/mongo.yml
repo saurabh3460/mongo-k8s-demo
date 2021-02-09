@@ -5,13 +5,11 @@ metadata:
   labels: 
     app: {{.Values.mongodb.name}}
     type: database
-
 spec:
   replicas: 1
   selector:
     matchLabels:
       app: {{.Values.mongodb.name}}
-      
   template:
     metadata:
       labels: 
@@ -32,8 +30,7 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: mongo-secret
-                  key: mongo-root-password                                              # use secret 
-
+                  key: mongo-root-password # use secret 
 ---
 apiVersion: v1
 kind: Service
