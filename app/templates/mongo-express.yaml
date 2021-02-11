@@ -9,8 +9,8 @@ spec:
   destination:
     namespace: web
     server: {{ .Values.spec.destination.server}}
-    project: default
-    source:
-      path: mongo-express
-      repoURL: {{ .Values.spec.source.repoURL }}
-      targetRevison: {{ .Values.spec.source.targetRevision }}
+  project: default
+  source:
+    path: mongo-express
+    repoURL: {{ .Values.spec.source.repoURL }}
+    targetRevison: {{ .Values.spec.source.targetRevision }}

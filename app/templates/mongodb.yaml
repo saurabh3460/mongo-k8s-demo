@@ -9,8 +9,8 @@ spec:
   destination:
     namespace: db
     server: {{ .Values.spec.destination.server}}
-    project: default
-    source:
-      path: mongodb
-      repoURL: {{ .Values.spec.source.repoURL }}
-      targetRevison: {{ .Values.spec.source.targetRevision }}
+  project: default
+  source:
+    path: mongodb
+    repoURL: {{ .Values.spec.source.repoURL }}
+    targetRevison: {{ .Values.spec.source.targetRevision }}
