@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: mongo-express
-  namespace: db
+  namespace: web
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
