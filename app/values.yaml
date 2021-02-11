@@ -1,0 +1,6 @@
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: https://github.com/saurabh3460/mongo-k8s-demo
+    targetRevision: HEAD

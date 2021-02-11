@@ -1,0 +1,15 @@
+name: mongo-express
+image: mongo-express
+tag: latest
+replicas: 1
+service:
+  port: 8081
+  targetPort: 8081
+  nodePort: 32000
+
+config_secret:
+  username: dXNlcm5hbWU=
+  password: cGFzc3dvcmQ=
+  service: 
+    name: mongo-service
+
