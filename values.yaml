@@ -1,14 +1,20 @@
-mongodb:
-  dpname: mongo-deployment
-  name: mongodb
-  image: mongo
-  tag: latest
-  replicas: 1
-  service:
-    name: mongodb
-    port: 27017
-   
-express:
+dpname: mongo-deployment
+name: mongodb
+image: mongo
+tag: latest
+replicas: 1
+service: &service
+  <<: &service_name
+    name: mongo-service
+  port: 27017
+
+config_secret:
+  username: dXNlcm5hbWU=
+  password: cGFzc3dvcmQ=
+  service: 
+    <<: *service_name
+
+mongo-express:
   name: mongo-express
   image: mongo-express
   tag: latest

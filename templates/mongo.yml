@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{.Values.mongodb.dpname}}
+  name: {{ required "A valid .Values.mongodb.dpname entry required!" .Values.dpname}}
   labels: 
-    app: {{.Values.mongodb.name}}
+    app: {{.Values.name}}
     type: database
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: {{.Values.mongodb.name}}
+      app: {{.Values.name}}
   template:
     metadata:
       labels: 
-        app: {{.Values.mongodb.name}}
+        app: {{.Values.name}}
     spec:
       containers:
-        - image:  {{.Values.mongodb.image}}:{{.Values.mongodb.tag}}
-          name:  {{.Values.mongodb.name}}
+        - image:  {{.Values.image}}:{{.Values.tag}}
+          name:  {{.Values.name}}
           ports:
             - containerPort:  27017
           env:
@@ -35,12 +35,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name:  {{.Values.mongodb.service.name}}
+  name:  {{.Values.service.name}}
 spec:
   selector:
-    app: {{.Values.mongodb.name}}
+    app: {{.Values.name}}
   type:   ClusterIP 
   ports:
   - protocol: TCP
-    port:  {{.Values.mongodb.service.port}}
+    port:  {{.Values.service.port}}
     targetPort:  27017
