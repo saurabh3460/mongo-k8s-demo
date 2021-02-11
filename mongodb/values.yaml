@@ -3,13 +3,17 @@ name: mongodb
 image: mongo
 tag: latest
 replicas: 1
-service: &service
-  <<: &service_name
-    name: mongo-service
+service: 
+  name: mongo-service
   port: 27017
+# service: &service
+#   <<: &service_name
+#     name: mongo-service
+#   port: 27017
+
 
 config_secret:
   username: dXNlcm5hbWU=
   password: cGFzc3dvcmQ=
   service: 
-    <<: *service_name
+    name: mongo-service
