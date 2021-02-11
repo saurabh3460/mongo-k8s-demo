@@ -18,7 +18,7 @@ mongo-express:
   name: mongo-express
   image: mongo-express
   tag: latest
-  replicas: 1
+  replicas: 2
   service:
     port: 8081
     targetPort: 8081
