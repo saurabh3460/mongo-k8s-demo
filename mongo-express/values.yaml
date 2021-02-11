@@ -11,5 +11,5 @@ config_secret:
   username: dXNlcm5hbWU=
   password: cGFzc3dvcmQ=
   service: 
-    name: db.mongo-service
+    name: mongo-service.db
 
