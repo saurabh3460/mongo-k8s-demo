@@ -7,7 +7,7 @@ metadata:
     - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
-    namespace: db
+    namespace: {{ .Values.db.namespace }}
     server: {{ .Values.spec.destination.server}}
   project: default
   source:

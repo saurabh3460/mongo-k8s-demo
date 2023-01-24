@@ -22,7 +22,7 @@ spec:
         # Labels is used to filter the PRs that you want to target. (optional)
         labels:
         - preview
-      requeueAfterSeconds: 1800
+      requeueAfterSeconds: 60
   template:
     metadata:
       name: 'pr-{{branch}}-{{number}}'
@@ -32,6 +32,13 @@ spec:
         repoURL: https://github.com/saurabh3460/mongo-k8s-demo
         targetRevision: dev
         path: app
+        helm:
+          parameters:
+            - name: web.namespace
+              value: 'pr-{{branch}}-{{number}}'
+            - name: web.namespace
+              value: 'pr-{{branch}}-{{number}}'
+              forceString: true
       syncPolicy:
         automated:
           prune: true
@@ -40,4 +47,4 @@ spec:
           - CreateNamespace=true
       destination:
         server: https://kubernetes.default.svc
-        namespace: 'bgd-{{branch}}-{{number}}'
+        namespace: 'pr-{{branch}}-{{number}}'
